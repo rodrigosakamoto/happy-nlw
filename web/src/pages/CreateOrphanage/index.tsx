@@ -8,7 +8,7 @@ import { FiPlus } from 'react-icons/fi';
 import Sidebar from '../../components/Sidebar';
 import mapIcon from '../../utils/mapIcon';
 
-import { Container, CreateOrphanageForm, InputBlock } from './styles';
+import { Container, CreateOrphanageForm, StyledInputBlock } from './styles';
 import api from '../../services/api';
 
 const CreateOrphanage: React.FC = () => {
@@ -115,16 +115,16 @@ const CreateOrphanage: React.FC = () => {
               )}
             </Map>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="name">Nome</label>
               <input
                 id="name"
                 value={name}
                 onChange={e => setName(e.target.value)}
               />
-            </InputBlock>
+            </StyledInputBlock>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="about">
                 Sobre
                 <span>Máximo de 300 caracteres</span>
@@ -135,9 +135,9 @@ const CreateOrphanage: React.FC = () => {
                 value={about}
                 onChange={e => setAbout(e.target.value)}
               />
-            </InputBlock>
+            </StyledInputBlock>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="images">Fotos</label>
               <div className="images-container">
                 {previewImages.map(image => {
@@ -153,31 +153,31 @@ const CreateOrphanage: React.FC = () => {
                 type="file"
                 id="image[]"
               />
-            </InputBlock>
+            </StyledInputBlock>
           </fieldset>
 
           <fieldset>
             <legend>Visitação</legend>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="instructions">Instruções</label>
               <textarea
                 id="instructions"
                 value={instructions}
                 onChange={e => setInstructions(e.target.value)}
               />
-            </InputBlock>
+            </StyledInputBlock>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="opening_hours">Horário de funcionamento</label>
               <input
                 id="opening_hours"
                 value={opening_hours}
                 onChange={e => setOpeningHours(e.target.value)}
               />
-            </InputBlock>
+            </StyledInputBlock>
 
-            <InputBlock>
+            <StyledInputBlock>
               <label htmlFor="open_on_weekends">Atende fim de semana</label>
 
               <div className="button-select">
@@ -196,7 +196,7 @@ const CreateOrphanage: React.FC = () => {
                   Não
                 </button>
               </div>
-            </InputBlock>
+            </StyledInputBlock>
           </fieldset>
           <button className="confirm-button" type="submit">
             Confirmar

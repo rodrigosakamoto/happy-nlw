@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import CreateOrphanage from './pages/CreateOrphanage';
 import Landing from './pages/Landing';
+import Login from './pages/Login';
 import Orphanage from './pages/Orphanage';
 import OrphanagesMap from './pages/OrphanagesMap';
 
@@ -15,6 +16,8 @@ function Routes() {
 
         <Route path="/orphanages/create" component={CreateOrphanage} />
         <Route path="/orphanages/:id" component={Orphanage} />
+
+        <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );
