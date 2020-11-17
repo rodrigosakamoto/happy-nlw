@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
 import userView from '../views/users_views';
@@ -26,6 +27,20 @@ export default {
       });
     }
 
-    return response.json(userView.render(user));
+    const token = sign({}, '9ebb03f4280e1af9b54d4709eee73740', {
+      subject: String(user.id),
+      expiresIn: '7d',
+    });
+
+    const { id, name } = userView.render(user);
+
+    return response.json({
+      user: {
+        id,
+        name,
+        email,
+      },
+      token,
+    });
   },
 };
