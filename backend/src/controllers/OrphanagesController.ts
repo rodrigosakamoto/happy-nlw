@@ -7,7 +7,7 @@ import orphanageView from '../views/orphanages_views';
 import Orphanage from '../models/Orphanage';
 
 export default {
-  async index(request: Request, response: Response) {
+  async index(request: Request, response: Response): Promise<Response> {
     const orphanagesRepository = getRepository(Orphanage);
 
     const orphanages = await orphanagesRepository.find({
@@ -17,7 +17,7 @@ export default {
     return response.json(orphanageView.renderMany(orphanages));
   },
 
-  async show(request: Request, response: Response) {
+  async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const orphanagesRepository = getRepository(Orphanage);
 
@@ -28,7 +28,7 @@ export default {
     return response.json(orphanageView.render(orphanage));
   },
 
-  async create(request: Request, response: Response) {
+  async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
       latitude,
