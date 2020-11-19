@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authConfig from '../config/auth';
 
 import User from '../models/User';
 import userView from '../views/users_views';
@@ -27,9 +28,11 @@ export default {
       });
     }
 
-    const token = sign({}, '9ebb03f4280e1af9b54d4709eee73740', {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: String(user.id),
-      expiresIn: '7d',
+      expiresIn,
     });
 
     const { id, name } = userView.render(user);
